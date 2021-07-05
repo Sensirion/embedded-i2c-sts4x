@@ -1,9 +1,4 @@
 /*
- * I2C-Generator: 0.2.0
- * Yaml Version: 0.1.0
- * Template Version: 0.7.0-12-g6411a7e
- */
-/*
  * Copyright (c) 2021, Sensirion AG
  * All rights reserved.
  *
@@ -46,21 +41,32 @@
  * #define printf(...)
  */
 
-// TODO: DRIVER_GENERATOR Add missing commands and make prints more pretty
-
 int main(void) {
     int16_t error = 0;
 
     sensirion_i2c_hal_init();
 
-    // Start Measurement
+    uint32_t serial_number;
+    error = sts4x_serial_number(&serial_number);
+    if (error) {
+        printf("Error executing sts4x_serial_number(): %i\n", error);
+    } else {
+        printf("Serial number: %u\n", serial_number);
+    }
 
+    // Start Measurement
     for (;;) {
+        int32_t temperature;
         // Read Measurement
-        // TODO: DRIVER_GENERATOR check and update measurement interval
+        error = sts4x_measure_high_precision(&temperature);
+        if (error) {
+            printf("Error executing sts4x_measure_high_precision(): %i\n",
+                   error);
+        } else {
+            printf("Temperature: %.1f °C\n", temperature / 1000.0f);
+        }
+
         sensirion_i2c_hal_sleep_usec(1000000);
-        // TODO: DRIVER_GENERATOR Add scaling and offset to printed measurement
-        // values
     }
 
     return 0;
