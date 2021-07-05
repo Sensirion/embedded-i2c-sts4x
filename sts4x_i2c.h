@@ -57,6 +57,16 @@ extern "C" {
 int16_t sts4x_measure_high_precision_ticks(uint16_t* temperature_ticks);
 
 /**
+ * sts4x_measure_high_precision() - SHT4x command for a single shot
+ * measurement with high repeatability.
+ *
+ * @param temperature Temperature in milli degrees centigrade.
+ *
+ * @return 0 on success, an error code otherwise
+ */
+int16_t sts4x_measure_high_precision(int32_t* temperature);
+
+/**
  * sts4x_measure_medium_precision_ticks() - SHT4x command for a single shot
  * measurement with medium repeatability.
  *
@@ -68,6 +78,16 @@ int16_t sts4x_measure_high_precision_ticks(uint16_t* temperature_ticks);
 int16_t sts4x_measure_medium_precision_ticks(uint16_t* temperature_ticks);
 
 /**
+ * sts4x_measure_medium_precision() - SHT4x command for a single shot
+ * measurement with medium repeatability.
+ *
+ * @param temperature Temperature in milli degrees centigrade.
+ *
+ * @return 0 on success, an error code otherwise
+ */
+int16_t sts4x_measure_medium_precision(int32_t* temperature);
+
+/**
  * sts4x_measure_lowest_precision_ticks() - SHT4x command for a single shot
  * measurement with lowest repeatability.
  *
@@ -77,6 +97,16 @@ int16_t sts4x_measure_medium_precision_ticks(uint16_t* temperature_ticks);
  * @return 0 on success, an error code otherwise
  */
 int16_t sts4x_measure_lowest_precision_ticks(uint16_t* temperature_ticks);
+
+/**
+ * sts4x_measure_lowest_precision() - SHT4x command for a single shot
+ * measurement with lowest repeatability.
+ *
+ * @param temperature Temperature in milli degrees centigrade.
+ *
+ * @return 0 on success, an error code otherwise
+ */
+int16_t sts4x_measure_lowest_precision(int32_t* temperature);
 
 /**
  * sts4x_serial_number() - Read out the serial number
