@@ -47,7 +47,7 @@ int16_t sts4x_measure_high_precision_ticks(uint16_t* temperature_ticks) {
     int16_t error;
     uint8_t buffer[3];
     uint16_t offset = 0;
-    offset = sensirion_i2c_add_command_to_buffer(&buffer[0], offset, 0xFD);
+    buffer[offset++] = (uint8_t)0xFD;
 
     error = sensirion_i2c_write_data(STS4X_I2C_ADDRESS, &buffer[0], offset);
     if (error) {
@@ -68,7 +68,7 @@ int16_t sts4x_measure_medium_precision_ticks(uint16_t* temperature_ticks) {
     int16_t error;
     uint8_t buffer[3];
     uint16_t offset = 0;
-    offset = sensirion_i2c_add_command_to_buffer(&buffer[0], offset, 0xF6);
+    buffer[offset++] = (uint8_t)0xF6;
 
     error = sensirion_i2c_write_data(STS4X_I2C_ADDRESS, &buffer[0], offset);
     if (error) {
@@ -89,7 +89,7 @@ int16_t sts4x_measure_lowest_precision_ticks(uint16_t* temperature_ticks) {
     int16_t error;
     uint8_t buffer[3];
     uint16_t offset = 0;
-    offset = sensirion_i2c_add_command_to_buffer(&buffer[0], offset, 0xE0);
+    buffer[offset++] = (uint8_t)0xE0;
 
     error = sensirion_i2c_write_data(STS4X_I2C_ADDRESS, &buffer[0], offset);
     if (error) {
@@ -110,7 +110,7 @@ int16_t sts4x_serial_number(uint32_t* serial_number) {
     int16_t error;
     uint8_t buffer[6];
     uint16_t offset = 0;
-    offset = sensirion_i2c_add_command_to_buffer(&buffer[0], offset, 0x89);
+    buffer[offset++] = (uint8_t)0x89;
 
     error = sensirion_i2c_write_data(STS4X_I2C_ADDRESS, &buffer[0], offset);
     if (error) {
@@ -131,7 +131,7 @@ int16_t sts4x_soft_reset(void) {
     int16_t error;
     uint8_t buffer[2];
     uint16_t offset = 0;
-    offset = sensirion_i2c_add_command_to_buffer(&buffer[0], offset, 0x94);
+    buffer[offset++] = (uint8_t)0x94;
 
     error = sensirion_i2c_write_data(STS4X_I2C_ADDRESS, &buffer[0], offset);
     if (error) {
