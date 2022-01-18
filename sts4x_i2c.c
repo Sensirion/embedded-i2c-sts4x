@@ -41,7 +41,13 @@
 #include "sensirion_i2c.h"
 #include "sensirion_i2c_hal.h"
 
-#define STS4X_I2C_ADDRESS 0x44
+static sts4x_t _driver = {.i2c_address = ADDR_STS4X};
+
+void init_driver(uint8_t i2c_address) {
+    _driver.i2c_address = i2c_address;
+}
+
+#define STS4X_I2C_ADDRESS _driver.i2c_address
 
 static int32_t convert_ticks_to_celsius(uint16_t ticks) {
     return ((21875 * (int32_t)ticks) >> 13) - 45000;

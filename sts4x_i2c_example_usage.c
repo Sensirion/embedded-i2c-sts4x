@@ -46,6 +46,15 @@ int main(void) {
 
     sensirion_i2c_hal_init();
 
+    /**
+     * select the proper i2c address for your sensor (defaults to 0x44)
+     *
+     * STS40-AD1B: ADDR_STS4X (I2C address: 0x44)
+     * STS40-BD1B: ADDR_STS4X_ALT (I2C address: 0x45)
+     * STS40-CD1B: ADDR_STS4X_ALT2 (I2C address: 0x46)
+     */
+    init_driver(ADDR_STS4X);
+
     uint32_t serial_number;
     error = sts4x_serial_number(&serial_number);
     if (error) {
