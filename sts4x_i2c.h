@@ -45,6 +45,23 @@ extern "C" {
 
 #include "sensirion_config.h"
 
+// i2c adresses
+#define ADDR_STS4X 0x44
+#define ADDR_STS4X_ALT 0x45
+#define ADDR_STS4X_ALT2 0x46
+
+typedef struct sts4x_tag {
+    uint8_t i2c_address;
+} sts4x_t;
+
+/**
+ * init_driver() - initialize the driver with the i2c address to be used to
+ *                 communicate with the STS4x sensor
+ *
+ * @param i2c_address i2c address of the STS4x sensor
+ */
+void init_driver(uint8_t i2c_address);
+
 /**
  * sts4x_measure_high_precision_ticks() - SHT4x command for a single shot
  * measurement with high repeatability.
