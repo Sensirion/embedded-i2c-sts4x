@@ -48,6 +48,7 @@
 TEST_GROUP (STS4X_Tests) {
     void setup() {
         sensirion_i2c_hal_init();
+        init_driver(ADDR_STS4X_ALT);
 
         int16_t error = sensirion_i2c_mux_set_single_channel(0x71, 6);
         CHECK_EQUAL_ZERO_TEXT(error, "sensirion_i2c_mux_set_single_channel")

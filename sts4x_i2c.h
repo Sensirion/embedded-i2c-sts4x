@@ -46,9 +46,9 @@ extern "C" {
 #include "sensirion_config.h"
 
 // i2c adresses
-#define ADDR_STS4X 0x44
-#define ADDR_STS4X_ALT 0x45
-#define ADDR_STS4X_ALT2 0x46
+#define ADDR_STS4X 0x46
+#define ADDR_STS4X_ALT 0x44
+#define ADDR_STS4X_ALT2 0x45
 
 typedef struct sts4x_tag {
     uint8_t i2c_address;
